@@ -54,6 +54,8 @@ namespace MiniSTL {
 		reference back() { return *(end() - 1); }
 		//
 		void Fill_n(const size_type n, const value_type value);
+		void fill_initialize(size_type n, const T&value);
+		iterator allocate_and_fill(size_type n, const T&x);
 		template<typename InputIterator>
 		void allocatorCopy(InputIterator first, InputIterator last);
 	public:
@@ -64,7 +66,8 @@ namespace MiniSTL {
 		iterator insert(iterator pos, const value_type value);
 		iterator insert_aux(iterator position, const value_type&x);
 		void clear();
-	
+		iterator erase(iterator fitst, iterator last);
+		iterator erase(iterator position);
 
 		void deallocate() {
 			if (capacity() > 0) {
@@ -93,6 +96,18 @@ namespace MiniSTL {
 		start = dataAllocator::allocate(n);
 		MiniSTL::uninitialized_fill_n(start, n, value);
 		finish = end_of_storage = start + n;
+	}
+	template<typename T, typename Alloc>
+	inline void Vector<T, Alloc>::fill_initialize(size_type n, const T & value){
+		start = allocate_and_fill(n, value);
+		finish = start + n;
+		end_of_storage = finish;
+	}
+	template<typename T, typename Alloc>
+	inline typename Vector<T,Alloc>::iterator Vector<T, Alloc>::allocate_and_fill(size_type n, const T & x){
+		iterator result = alloc::allocate(n);
+		uninitialized_fill_n(result, n, x);
+		return result;
 	}
 	template<typename T, typename Alloc>
 	template<typename InputIterator>
@@ -154,6 +169,21 @@ namespace MiniSTL {
 	inline void Vector<T, Alloc>::clear(){
 		destroy(start, finish);
 		finish = start;
+	}
+	template<typename T, typename Alloc>
+	inline typename Vector<T,Alloc>::iterator Vector<T, Alloc>::erase(iterator first, iterator last){
+		iterator i = MiniSTL::copy(last, finish, first);
+		destroy(i, finish);
+		finish = finish - (last - first);
+		return first;
+	}
+	template<typename T, typename Alloc>
+	inline typename Vector<T,Alloc>::iterator Vector<T, Alloc>::erase(iterator position){
+		if (position + 1 != end())
+			copy(position+1, finish, position);
+		--finish;
+		destroy(finish);
+		return position;
 	}
 	template<typename T, typename Alloc>
 	void Vector<T, Alloc>::pop_back() {

@@ -2,6 +2,8 @@
 #include <chrono>
 #include "Vector.h"
 #include <vector>
+#include "List.h"
+#include <list>
 #define start_time auto start = std::chrono::system_clock::now();
 #define end_time {\
 auto end = std::chrono::system_clock::now();\
@@ -14,25 +16,25 @@ using namespace std;
 int main() {
 
 
-	start_time
+	//start_time
+
 		MiniSTL::Vector<int> v;
-
-	std::vector<int> V;
-
-
-	for (int i = 0; i < 1e7; i++) {
-		v.push_back(i);
-		//V.push_back(i);
+	MiniSTL::List<int> l;
+	std::list<int> stdl;
+	
+	srand((unsigned)time(NULL));
+	for (int i = 0; i < 100; i++) {
+		l.push_back(i);
 	}
-	auto it = MiniSTL::find(v.begin(), v.end(), 12000000);
+	l.reverse();
+	for (auto it = l.begin(); it != l.end(); it++) {
+		cout << *it << endl;
+	}
 
-	printf("%d\n", v.size());
 
+	//end_time
+	//	system("pause");
 
-	end_time
-		//	system("pause");
-		float c;
-	cin >> c;
 	return 0;
 }
 
