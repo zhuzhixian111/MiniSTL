@@ -153,17 +153,27 @@
   <ItemGroup>
     <ClCompile Include="Alloc.cpp" />
     <ClCompile Include="MiniSTL.cpp" />
+    <ClCompile Include="VectorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
     <ClInclude Include="Alloc.h" />
     <ClInclude Include="Allocator.h" />
     <ClInclude Include="Construct.h" />
+    <ClInclude Include="Deque.h" />
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Stack.h" />
+    <ClInclude Include="Test.h" />
     <ClInclude Include="TypeTraits.h" />
     <ClInclude Include="Uninitialized.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="VectorTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MiniSTL.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

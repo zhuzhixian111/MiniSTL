@@ -29,7 +29,7 @@ namespace MiniSTL {
 		typedef ptrdiff_t different_type;
 		typedef const value_type* const_iterator;
 		typedef const value_type& const_reference;
-
+		typedef simple_alloc<value_type, Alloc> data_allocator;
 		
 	public:
 		iterator begin() { return start; }
@@ -87,9 +87,10 @@ namespace MiniSTL {
 	}
 	template<typename T, typename Alloc>
 	inline Vector<T, Alloc>::Vector(const int n,const value_type value){
-		start = dataAllocator::allocate(n);
+		start = data_allocator::allocate(n);
 		MiniSTL::uninitialized_fill_n(start, n, value);
 		finish = end_of_storage = start + n;
+	
 	}
 	template<typename T, typename Alloc>
 	void Vector<T, Alloc>::Fill_n(const size_type n, const value_type value){

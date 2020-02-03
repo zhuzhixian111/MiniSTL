@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\Test">
+      <UniqueIdentifier>{d9fb3a37-2a1c-4d1d-bd5d-dfbe725463d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniSTL.cpp">
@@ -21,11 +24,11 @@
     <ClCompile Include="Alloc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="VectorTest.cpp">
+      <Filter>头文件\Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithm.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Alloc.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -50,5 +53,31 @@
     <ClInclude Include="List.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Deque.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorTest.h">
+      <Filter>头文件\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>头文件\Test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MiniSTL.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

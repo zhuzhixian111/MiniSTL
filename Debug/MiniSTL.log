@@ -1,2 +1,3 @@
-﻿  MiniSTL.cpp
+﻿  VectorTest.cpp
+d:\vs2017\ministl\ministl\vectortest.cpp(27): warning C4018: “<”: 有符号/无符号不匹配
   MiniSTL.vcxproj -> D:\vs2017\MiniSTL\Debug\MiniSTL.exe

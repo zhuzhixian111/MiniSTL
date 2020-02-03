@@ -4,6 +4,9 @@
 #include <vector>
 #include "List.h"
 #include <list>
+#include "Deque.h"
+#include "Stack.h"
+
 #define start_time auto start = std::chrono::system_clock::now();
 #define end_time {\
 auto end = std::chrono::system_clock::now();\
@@ -13,28 +16,21 @@ std::cout << "花费了"<< double(duration.count()) * std::chrono::microseconds:
 using namespace std;
 
 
+#include <deque>
+#include "Queue.h"
+#include <queue>
+#include "VectorTest.h"
+
+
 int main() {
 
 
-	//start_time
+	MiniSTL::VectorTest::testall();
 
-		MiniSTL::Vector<int> v;
-	MiniSTL::List<int> l;
-	std::list<int> stdl;
 	
-	srand((unsigned)time(NULL));
-	for (int i = 0; i < 100; i++) {
-		l.push_back(i);
-	}
-	l.reverse();
-	for (auto it = l.begin(); it != l.end(); it++) {
-		cout << *it << endl;
-	}
-
-
-	//end_time
-	//	system("pause");
-
+	
+	system("pause");
+	
 	return 0;
 }
 

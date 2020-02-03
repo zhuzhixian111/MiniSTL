@@ -72,4 +72,10 @@ namespace MiniSTL {
 		if (first >= last) return;
 			
 	}
+	template<typename OutputIterator,typename Size,typename T>
+	OutputIterator fill_n(OutputIterator first, Size n, const T& value) {
+		for (; n > 0; --n, ++first)
+			*first = value;
+		return first;
+	}
 }
