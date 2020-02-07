@@ -47,7 +47,7 @@ namespace MiniSTL {
 		template<typename InputIterator>
 		Vector(InputIterator first, InputIterator last);
 		Vector(const Vector&v);
-	
+		Vector(std::initializer_list<value_type> list);
 		//
 		reference operator[](size_type n) { return *(begin() + n); }
 		reference front() { return *(begin()); }
@@ -59,7 +59,7 @@ namespace MiniSTL {
 		template<typename InputIterator>
 		void allocatorCopy(InputIterator first, InputIterator last);
 	public:
-	//	~Vector();
+		~Vector();
 		
 		void push_back(const value_type &x);
 		void pop_back();
@@ -74,7 +74,6 @@ namespace MiniSTL {
 				alloc::deallocate(start, capacity());
 			}
 		}
-		//value_type &operator[](value_type index);
 	};
 }
 namespace MiniSTL {
@@ -90,7 +89,14 @@ namespace MiniSTL {
 		start = data_allocator::allocate(n);
 		MiniSTL::uninitialized_fill_n(start, n, value);
 		finish = end_of_storage = start + n;
-	
+	}
+	template<typename T, typename Alloc>
+	inline Vector<T, Alloc>::Vector(const Vector & v){
+		allocatorCopy(v.begin(), v.end());
+	}
+	template<typename T, typename Alloc>
+	inline Vector<T, Alloc>::Vector(std::initializer_list<value_type> list){
+		allocatorCopy(list.begin(), list.end());
 	}
 	template<typename T, typename Alloc>
 	void Vector<T, Alloc>::Fill_n(const size_type n, const value_type value){
@@ -118,10 +124,16 @@ namespace MiniSTL {
 	template<typename T, typename Alloc>
 	template<typename InputIterator>
 	inline void Vector<T, Alloc>::allocatorCopy(InputIterator first, InputIterator last){
-		start = dataAllocator::allocate(last-first);
+		start = data_allocator::allocate(last-first);
 		finish = MiniSTL::uninitalized_copy(first, last, start);
 		end_of_storage = finish;
 
+	}
+	template<typename T, typename Alloc>
+	inline Vector<T, Alloc>::~Vector(){
+		if (capacity()!=0) {
+			data_allocator::deallocate(start, capacity());
+		}
 	}
 	template<typename T,typename Alloc>
 	void Vector<T, Alloc>::push_back(const value_type &x) {
@@ -131,7 +143,6 @@ namespace MiniSTL {
 		}
 		else {
 			insert_aux(end(),x);
-			
 		}
 
 	}
@@ -157,8 +168,6 @@ namespace MiniSTL {
 			new_finish = MiniSTL::uninitalized_copy(position, finish, new_finish);
 			destroy(begin(), end());
 			deallocate();
-//			MiniSTL::dea
-		//	alloc::deallocate(start, capacity());
 			start = new_start;
 			finish = new_finish;;
 			end_of_storage = new_start + len;

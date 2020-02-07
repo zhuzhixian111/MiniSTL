@@ -53,8 +53,8 @@ namespace MiniSTL {
 	}
 	template <typename Iterator>
 	inline typename iterator_traits<Iterator>::value_type*
-	valye_type(const Iterator&) {
-		return static_cast<typename iterator_traits<Iterator>::value_type>(0);
+	value_type(const Iterator&) {
+		return static_cast<typename iterator_traits<Iterator>::value_type*>(0);
 	}
 
 }

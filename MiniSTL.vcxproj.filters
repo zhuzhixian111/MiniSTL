@@ -14,7 +14,7 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="头文件\Test">
-      <UniqueIdentifier>{d9fb3a37-2a1c-4d1d-bd5d-dfbe725463d0}</UniqueIdentifier>
+      <UniqueIdentifier>{5504ecea-14b2-40b1-93d3-3ac938dccc14}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -24,7 +24,10 @@
     <ClCompile Include="Alloc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="VectorTest.cpp">
+    <ClCompile Include="Test\VectorTest.cpp">
+      <Filter>头文件\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="Test\Priority_queueTest.cpp">
       <Filter>头文件\Test</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,9 +50,6 @@
     <ClInclude Include="Uninitialized.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="List.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -68,10 +68,22 @@
     <ClInclude Include="Algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="VectorTest.h">
+    <ClInclude Include="Priority_queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Test\VectorTest.h">
       <Filter>头文件\Test</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h">
+    <ClInclude Include="Test\Priority_queueTest.h">
+      <Filter>头文件\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Test\Test.h">
       <Filter>头文件\Test</Filter>
     </ClInclude>
   </ItemGroup>

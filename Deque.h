@@ -114,30 +114,28 @@ namespace MiniSTL {
 		iterator finish;
 		
 	public:
-
-		void pop_back_aux() {
-			finish.set_node(finish.node - 1);
-			finish.cur = finish.last - 1;
-			destroy(finish.cur);
-		}
+		
 		pointer allocate_node() {
-
 			return data_allocator::allocate(initial_map_size());
 		}
 		deque_type allocate() {
 			deque_type node = allocate_node();
-			
-		
 			return node;
 		}
 		void push_back(const value_type& t) {
-			if (finish.cur != finish.last - 1){
-				
+			if (finish.cur != finish.last - 1){		
 				construct(finish.cur, t); 
-			++finish.cur; 
+				++finish.cur; 
 			}
-			else 
-			push_back_aux(t);
+			else {
+				value_type t_copy = t;
+				reserve_map_at_back();
+				*(finish.node + 1) = allocate_node();
+				construct(finish.cur, t_copy);
+				finish.set_node(finish.node + 1);
+				finish.cur = finish.first;
+			}
+			
 		}
 		void reserve_map_at_back(size_type nodes_to_add = 1) {
 			if (nodes_to_add + 1 > map_size - (finish.node - map))
@@ -172,22 +170,13 @@ namespace MiniSTL {
 			start.set_node(new_nstart);
 			finish.set_node(new_nstart + old_num_nodes - 1);
 		}
-		void push_back_aux(const value_type& t) {
-			value_type t_copy = t;
-			reserve_map_at_back();  
-			*(finish.node + 1) = allocate_node();		
-			construct(finish.cur, t_copy);
-			finish.set_node(finish.node + 1);
-			finish.cur = finish.first;
 
-		}
 		size_type initial_map_size() {
 			return 64;
 		}
 		static size_t buffer_size() { return __deque_buf_size(BufSiz, sizeof(T)); }
 		void create_map_and_nodes(size_type num_elements)
 		{
-			
 			size_type num_nodes = num_elements / buffer_size() + 1;
 			map_size = std::max(initial_map_size(), num_nodes + 2);
 			map = map_allocator::allocate(map_size);
@@ -250,56 +239,46 @@ namespace MiniSTL {
 				--finish.cur; 
 				destroy(finish.cur); 
 			}
-			else
-				pop_back_aux(); 
+			else {
+				finish.set_node(finish.node - 1);
+				finish.cur = finish.last - 1;
+				destroy(finish.cur);
+			}
+				
 		}
 		void pop_front() {
 			if (start.cur != start.last-1) {
 				destroy(start.cur);
 				++start.cur;
 			}
-			else
-				pop_front_aux();
-		}
-		void pop_front_aux() {
-			destroy(start.cur);
-		
-			start.set_node(start.node + 1);
-			start.cur = start.first;
-	
-	
-		}
-		bool empty() {
-			if (start.cur == start.first)
-				return true;
-			return false;
+			else {
+				destroy(start.cur);
+				start.set_node(start.node + 1);
+				start.cur = start.first;
+			}
+				
 		}
 
+		bool empty() {
+			return size() == 0;
+		}
 		void push_front(const value_type& t) {
-	
 			if (start.cur != start.first) { 
 				construct(start.cur - 1, t); 
 				--start.cur; 
 			}
-			else 
-				push_front_aux(t);
-		}
-		void push_front_aux(const value_type& t) {
-			value_type t_copy = t;
-			reserve_map_at_front(); 
-			*(start.node - 1) = allocate_node();
-			
-			start.set_node(start.node - 1);
-			start.cur = start.last - 1;
-			construct(start.cur, t_copy);
+			else {
+				value_type t_copy = t;
+				reserve_map_at_front();
+				*(start.node - 1) = allocate_node();
 
+				start.set_node(start.node - 1);
+				start.cur = start.last - 1;
+				construct(start.cur, t_copy);
+			}
 			
-		
-	
-		
-			//deallocate_node(*(start.node - 1));
-		
 		}
+		
 	};
 	
 	

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Allocator.h"
+#include "Deque.h"
+#include "Priority_queue.h"
 
 namespace MiniSTL {
 	template<typename T,typename Sequence=Deque<T>>

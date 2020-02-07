@@ -153,7 +153,8 @@
   <ItemGroup>
     <ClCompile Include="Alloc.cpp" />
     <ClCompile Include="MiniSTL.cpp" />
-    <ClCompile Include="VectorTest.cpp" />
+    <ClCompile Include="Test\Priority_queueTest.cpp" />
+    <ClCompile Include="Test\VectorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
@@ -161,16 +162,19 @@
     <ClInclude Include="Allocator.h" />
     <ClInclude Include="Construct.h" />
     <ClInclude Include="Deque.h" />
+    <ClInclude Include="Function.h" />
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="Priority_queue.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stack.h" />
-    <ClInclude Include="Test.h" />
+    <ClInclude Include="Test\Priority_queueTest.h" />
+    <ClInclude Include="Test\Test.h" />
+    <ClInclude Include="Test\VectorTest.h" />
     <ClInclude Include="TypeTraits.h" />
     <ClInclude Include="Uninitialized.h" />
     <ClInclude Include="Vector.h" />
-    <ClInclude Include="VectorTest.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MiniSTL.rc" />

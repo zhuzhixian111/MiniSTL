@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+
 namespace MiniSTL {
 	namespace Test {
 	

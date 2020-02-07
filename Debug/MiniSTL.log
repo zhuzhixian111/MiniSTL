@@ -1,3 +1,4 @@
-﻿  VectorTest.cpp
-d:\vs2017\ministl\ministl\vectortest.cpp(27): warning C4018: “<”: 有符号/无符号不匹配
+﻿  MiniSTL.cpp
+d:\vs2017\ministl\ministl\algorithm.h(105): warning C4348: “MiniSTL::__push_heap_aux”: 重定义默认参数 : 参数 4
+  d:\vs2017\ministl\ministl\algorithm.h(83): note: 参见“MiniSTL::__push_heap_aux”的声明
   MiniSTL.vcxproj -> D:\vs2017\MiniSTL\Debug\MiniSTL.exe
